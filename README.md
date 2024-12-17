@@ -100,10 +100,4 @@ Ensure the following are installed on your system:
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 Feel free to reach out with any questions or issues. Happy storytelling! 🌟

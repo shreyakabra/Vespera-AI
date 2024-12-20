@@ -1,16 +1,19 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "main.py",
-        "use": "@vercel/python"
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/main.py",  
+      "use": "@vercel/python",
+      "config": {
+        "buildCommand": "pip install -r requirements.txt",
+        "devCommand": "python backend/main.py"
       }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/main.py"
-      }
-    ]
-  }
-  
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "backend/main.py"
+    }
+  ]
+}

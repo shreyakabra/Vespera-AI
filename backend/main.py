@@ -41,15 +41,26 @@ def generate_story():
             prompt = f"Mystery: {prompt}"
         # Add more modes as needed
 
+        # Modified prompt for generating both title and story
+        structured_prompt = (
+            f"{prompt}\n\n"
+            "Please provide a story title followed by the story itself. The title should be on a separate line."
+        )
+
         # Generate story using GPT-4
         response = client.chat.completions.create(
             model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}],
+            messages=[{"role": "user", "content": structured_prompt}],
         )
 
-        generated_story = response.choices[0].message.content
+        generated_content = response.choices[0].message.content.split("\n", 1)
+        title = generated_content[0].strip()
+        story = generated_content[1].strip()
 
-        return jsonify({"stories": [generated_story]})
+        return jsonify({
+            "title": title,
+            "story": story
+        })
     except Exception as e:
         return jsonify({"error": f"Story generation failed: {str(e)}"}), 500
 
@@ -57,6 +68,7 @@ def generate_story():
 @app.route("/save_story", methods=["POST"])
 def save_story():
     data = request.json
+    title = data.get("title", "").strip()
     prompt = data.get("prompt", "").strip()
     story = data.get("story", "").strip()
 
@@ -65,8 +77,8 @@ def save_story():
 
     try:
         # Save story to MongoDB
-        stories_collection.insert_one({"prompt": prompt, "story": story})
-        return jsonify({"message": "Story saved successfully!"})
+        stories_collection.insert_one({"title": title, "prompt": prompt, "story": story})
+        return jsonify({"message": "Story saved successfully!"}), 200
     except Exception as e:
         return jsonify({"error": f"Saving story failed: {str(e)}"}), 500
 

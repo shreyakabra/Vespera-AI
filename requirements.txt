@@ -2,4 +2,4 @@ flask
 streamlit
 pymongo
 transformers
-gpt4free (gpt-4o-mini)
+g4f (gpt-4o-mini)

@@ -1,5 +1,7 @@
 # Vespera-AI
 ### Vespera AI - README
+### Vespera AI
+
 
 Welcome to **Vespera AI**, an AI-powered storytelling web app! With Vespera, users can generate creative stories based on their prompts, choose storytelling modes, and save or view generated content for later use. This README provides details on the app, how to access it, and how to set up and run the backend and frontend.
 
@@ -101,6 +103,7 @@ Ensure the following are installed on your system:
 
 ---
 
+<<<<<<< HEAD
 ## License
 
 This project is licensed under the MIT License.
@@ -108,3 +111,6 @@ This project is licensed under the MIT License.
 ---
 
 Feel free to reach out with any questions or issues. Happy storytelling! 🌟
+=======
+Feel free to reach out with any questions or issues. Happy storytelling! 🌟
+>>>>>>> dff0cdb6cc7f93929f0eb10030609824502f5df0
